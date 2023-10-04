@@ -14,30 +14,17 @@ class FirestoreMethods {
           .set({'id': id, 'datetime': datetime, 'name': name, 'desc': desc});
       print('Data set');
     } catch (e) {
-      print(e.toString());
       SnackBar(
         content: Text(e.toString()),
       );
     }
   }
 
-  Future<Map<String, dynamic>> getDateTime(String id) async {
-    Map<String, dynamic> data = {
-      'hasdata': false,
-    };
+  Future<void> deleteData(String id) async {
     try {
-      DocumentSnapshot snapshot =
-          await _firestore.collection("DateTime").doc(id).get();
-      data = {
-        'name': snapshot['name'],
-        'desc': snapshot['desc'],
-        'id': snapshot['id'],
-        'datetime': snapshot['datetime'],
-        'hasdata': true,
-      };
+      await _firestore.collection('DateTime').doc(id).delete();
     } catch (e) {
       print(e.toString());
     }
-    return data;
   }
 }

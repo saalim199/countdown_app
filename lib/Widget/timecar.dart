@@ -3,7 +3,7 @@ import 'package:countdown_app/utils/colors.dart';
 import 'package:date_count_down/date_count_down.dart';
 import 'package:flutter/material.dart';
 
-class TimeCard extends StatelessWidget {
+class TimeCard extends StatefulWidget {
   final DateTime dt;
   final String title;
   final String desc;
@@ -15,6 +15,11 @@ class TimeCard extends StatelessWidget {
       required this.desc,
       required this.id});
 
+  @override
+  State<TimeCard> createState() => _TimeCardState();
+}
+
+class _TimeCardState extends State<TimeCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,8 +36,8 @@ class TimeCard extends StatelessWidget {
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: CountDownText(
-              due: dt,
-              finishedText: "TimesUp at ${dt.toString()}",
+              due: widget.dt,
+              finishedText: "TimesUp at ${widget.dt.toString()}",
               showLabel: true,
               longDateName: true,
               daysTextLong: " DAYS ",
@@ -54,7 +59,7 @@ class TimeCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        title,
+                        widget.title,
                         style: TextStyle(
                           fontSize: 24,
                           color: Colors.grey[800],
@@ -62,7 +67,7 @@ class TimeCard extends StatelessWidget {
                       ),
                       Container(height: 10),
                       Text(
-                        desc,
+                        widget.desc,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -78,10 +83,10 @@ class TimeCard extends StatelessWidget {
                     onPressed: () async {
                       await FirebaseFirestore.instance
                           .collection("DateTime")
-                          .doc(id)
+                          .doc(widget.id)
                           .delete();
                     },
-                    icon: Icon(Icons.delete)),
+                    icon: const Icon(Icons.delete)),
               ],
             ),
           ),
