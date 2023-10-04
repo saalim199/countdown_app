@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "241214364644",
+    "project_id": "countdown-sample",
+    "storage_bucket": "countdown-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241214364644:android:93115f0c3ef543eb2d05f1",
+        "android_client_info": {
+          "package_name": "com.example.countdown_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt7OE9lhpoSHxOe4lVQwYIDBJOtTi_V5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
